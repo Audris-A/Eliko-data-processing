@@ -33,7 +33,7 @@ with open(str(sys.argv[1]) + ".csv") as csvDataFile:
             counter = 2
             for key in locationRecord:
                 if key == "timestamp":
-                    row[counter] = datetime.fromtimestamp(float(row[counter])).strftime("%y.%m.%d %H:%M:%S.%f")
+                    row[counter] = datetime.fromtimestamp(float(row[counter])).strftime("%d.%m.%Y %H:%M:%S.%f")
                     distanceRecordArray[distanceRecordArrayIt]["timestamp_from_coordinate_msg"] = row[counter]
                     distanceRecordArrayIt += 1
 

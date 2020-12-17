@@ -3,6 +3,10 @@
         1) $PEKIO,COORD,148 (8 bit counter),0x000810 (Birka),18.78 (x),4.10 (y),0.91 (z), (error string),1607780734.22 (unix timestamp, kad mērījums tika izdarīts)
         2) $PEKIO,RR_L,227 (8 bit counter),0x000644 (Birka),0x000454 (Enkurs),559 (Distance),0x000488,1901,0x000452,2452,0x000496,2087,0x000475,1482,0x000449,298,
              15578410 (Birkas relatīvs laiks milisekundēs),0x00,0x00,0x00,0x00,0x00,0x00,0x00
+
+    Ziņas pieprasījums: $PEKIO,GET_HISTORY_BY_UNIX_TIME, ALL (var likt arī specifiskus birku id), unix time from, unix time to
+        Piemērs - $PEKIO,GET_HISTORY_BY_UNIX_TIME,ALL,1608098400,1608159600
+
 """
 
 import csv
@@ -32,7 +36,7 @@ with open(str(sys.argv[1]) + ".csv") as csvDataFile:
     distanceRecordArrayIt = 0
 
     for row in csvReader:
-        row.insert(2, "LNO_stage") # Jāpiekoriģē katrai vietai ar roku
+        row.insert(2, "LNO_PARTER") # Jāpiekoriģē katrai vietai ar roku
 
         if row[1] == "COORD":
             locationRecord = copy.deepcopy(locationRecordTemplate)

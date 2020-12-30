@@ -36,7 +36,7 @@ with open(str(sys.argv[1]) + ".csv") as csvDataFile:
     distanceRecordArrayIt = 0
 
     for row in csvReader:
-        row.insert(2, "LNO_PARTER") # Jāpiekoriģē katrai vietai ar roku
+        row.insert(2, str(sys.argv[2])) # Vietas nosaukums (zone_id), piemēram LNO_PARTER
 
         if row[1] == "COORD":
             locationRecord = copy.deepcopy(locationRecordTemplate)

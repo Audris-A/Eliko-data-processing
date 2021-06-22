@@ -5,7 +5,8 @@
              15578410 (Birkas relatīvs laiks milisekundēs),0x00,0x00,0x00,0x00,0x00,0x00,0x00
 
     Ziņas pieprasījums: $PEKIO,GET_HISTORY_BY_UNIX_TIME, ALL (var likt arī specifiskus birku id), unix time from, unix time to
-        Piemērs - $PEKIO,GET_HISTORY_BY_UNIX_TIME,ALL,1608098400,1608159600
+        Piemērs - $PEKIO,GET_HISTORY_BY_UNIX_TIME,ALL,1624335690,1624378890
+        						
 
 """
 
@@ -25,8 +26,8 @@ distanceCollection = database["ElikoDistances"]
 locationRecordArray = []
 distanceRecordArray = []
 
-locationRecordTemplate = {"zone_id" : "", "counter" : "", "tag_id" : "", "x_coordinate" : "", "y_coordinate" : "", "z_coordinate" : "", "error_msg" : "", "timestamp" : ""}
-distanceRecordTemplate = {"zone_id" : "", "counter" : "", "tag_id" : "", "anchor_1" : "", "distance_1" : "", "anchor_2" : "", "distance_2" : "", "anchor_3" : "", 
+locationRecordTemplate = {"name" : "", "counter" : "", "tag_id" : "", "x_coordinate" : "", "y_coordinate" : "", "z_coordinate" : "", "error_msg" : "", "timestamp" : ""}
+distanceRecordTemplate = {"name" : "", "counter" : "", "tag_id" : "", "anchor_1" : "", "distance_1" : "", "anchor_2" : "", "distance_2" : "", "anchor_3" : "", 
                           "distance_3" : "", "anchor_4" : "", "distance_4" : "", "anchor_5" : "", "distance_5" : "", "anchor_6" : "", "distance_6" : "", 
                           "relative_timestamp" : "", "timestamp_from_coordinate_msg": ""}
 
@@ -36,7 +37,7 @@ with open(str(sys.argv[1]) + ".csv") as csvDataFile:
     distanceRecordArrayIt = 0
 
     for row in csvReader:
-        row.insert(2, str(sys.argv[2])) # Vietas nosaukums (zone_id), piemēram LNO_PARTER
+        row.insert(2, str(sys.argv[2])) # Vietas nosaukums (name), piemēram LNO_PARTER
 
         if row[1] == "COORD":
             locationRecord = copy.deepcopy(locationRecordTemplate)
